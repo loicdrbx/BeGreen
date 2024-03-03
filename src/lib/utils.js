@@ -1,20 +1,17 @@
 import { storage, db } from "./firebase";
 import { uploadString, ref, getDownloadURL } from "firebase/storage";
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc } from "firebase/firestore";
 
 async function uploadBase64Img(file) {
   try {
     const storagePath = file.substring(0, 12);
     const storageRef = ref(storage, storagePath);
 
-    const snapshot = await uploadString(storageRef, file, 'base64');
-    console.log('Uploaded a base64url string!');
-
+    const snapshot = await uploadString(storageRef, file, "data_url");
     const downloadURL = await getDownloadURL(storageRef);
-    console.log('File available at', downloadURL);
     return downloadURL;
   } catch (error) {
-    console.error('Error uploading base64 file:', error);
+    console.error("Error uploading file:", error);
   }
 }
 
@@ -25,7 +22,7 @@ async function createPost(postData) {
       frontImg: postData.frontImgUrl,
       score: postData.score,
       username: postData.username,
-      postedAt: Date.now()
+      postedAt: Date.now(),
     });
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
@@ -33,15 +30,8 @@ async function createPost(postData) {
   }
 }
 
-function getLeaderBoard() {
+function getLeaderBoard() {}
 
-}
+function getTimeLine() {}
 
-function getTimeLine() {
-
-}
-
-export {
-  uploadBase64Img,
-  createPost
-}
+export { uploadBase64Img, createPost };
