@@ -12,6 +12,7 @@ async function uploadBase64Img(file) {
 
     const downloadURL = await getDownloadURL(storageRef);
     console.log('File available at', downloadURL);
+    return downloadURL;
   } catch (error) {
     console.error('Error uploading base64 file:', error);
   }
