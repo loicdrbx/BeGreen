@@ -32,9 +32,7 @@ async function createPost(postData) {
   }
 }
 
-function getLeaderBoard() {
-
-}
+function getLeaderBoard() {}
 
 async function getTimeline() {
   let postsList = [];
@@ -43,15 +41,11 @@ async function getTimeline() {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       postsList.push(doc.data());
-    })
+    });
   } catch (e) {
     console.error("Error getting timeline: ", e);
   }
   console.log(postsList);
 }
 
-export {
-  uploadBase64Img,
-  createPost,
-  getTimeline
-}
+export { uploadBase64Img, createPost, getTimeline };

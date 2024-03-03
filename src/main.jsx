@@ -6,6 +6,7 @@ import Friends from "./Friends";
 import Leaderboard from "./Leaderboard";
 import "./index.css";
 import CameraPage from "./components/CameraPage";
+import ResultsPage from "./components/ResultsPage";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/camera",
     element: <CameraPage />,
+  },
+  {
+    path: "/results",
+    element: <ResultsPage />,
   },
   {
     path: "/leaderboard",
