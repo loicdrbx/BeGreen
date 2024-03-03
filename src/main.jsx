@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Friends from "./Friends";
 import "./index.css";
-import CapturePage from "./components/Camera/CapturePage";
+import CapturePage from "./components/CapturePage";
 
 const router = createBrowserRouter([
   {
