@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
 import shutterbutton from "../assets/shutterbutton.png";
 import { useRef, useState, useEffect, useCallback } from "react";
@@ -13,6 +14,7 @@ export default function CameraPage() {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const videoConstraints = {
     width,
@@ -55,7 +57,7 @@ export default function CameraPage() {
       window.localStorage.setItem("back", backImgUrl);
       window.localStorage.setItem("score", score);
       window.localStorage.setItem("caption", caption);
-      window.location.href = "results";
+      navigate("/results");
     }, 1500);
   }, [webcamRef]);
 
