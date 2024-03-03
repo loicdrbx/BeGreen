@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import Navbar from './Navbar.jsx'
-import Post from './Post.jsx'
-import Bottom from './Bottom.jsx'
+import Navbar from "./Navbar.jsx";
+import Post from "./Post.jsx";
+import Bottom from "./Bottom.jsx";
+import WebcamCapture from "./components/WebcamCapture.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,18 +14,17 @@ function App() {
 
   return (
     <>
-      <div >
+      <div>
         <Navbar />
-        <div className='pt-14'>
+        <div className="pt-14">
           <Post />
           <Post />
           <Post />
-          <Bottom /> 
+          <Bottom />
         </div>
-
       </div>
 
-      {/* <WebcamCapture /> */}
+      <WebcamCapture />
     </>
   );
 }
