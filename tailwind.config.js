@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'offwhite': '#fffff2',
+        'light-green-text': '#DFE6DA',
       },
     },
   },
