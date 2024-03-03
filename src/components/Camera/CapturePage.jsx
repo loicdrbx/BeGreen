@@ -1,14 +1,15 @@
 import WebcamCapture from "./WebcamCapture";
-import Bottom from "../../Bottom";
+import shutterbutton from "../../assets/shutterbutton.png";
 
 export default function CapturePage() {
   return (
-    <div className="mt-5 mb-10 w-screen h-[70px] flex flex-col">
-      <h1 className="text-xl font-black tracking-tight text-center">BeGreen.</h1>
-      <div className="flex-1">
+    <div className="w-screen h-screen flex flex-col">
+      <h1 className="pt-5 pb-10 text-xl font-black tracking-tight text-center">BeGreen.</h1>
+      <div className="flex-1 overflow-auto bg-blue-300">
         <WebcamCapture />
-
-        <Bottom />
+      </div>
+      <div className="flex justify-center">
+        <img src={shutterbutton} alt="shutter button" className="h-20 w-20 my-8" />
       </div>
     </div>
   );
