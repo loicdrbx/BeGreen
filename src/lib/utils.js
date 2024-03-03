@@ -1,6 +1,6 @@
 import { storage, db } from "./firebase";
 import { uploadString, ref, getDownloadURL } from "firebase/storage";
-import { collection, addDoc } from "firebase/firestore"; 
+import { query, getDocs, orderBy, collection, addDoc } from "firebase/firestore"; 
 
 async function uploadBase64Img(file) {
   try {
@@ -37,11 +37,22 @@ function getLeaderBoard() {
 
 }
 
-function getTimeLine() {
-
+async function getTimeline() {
+  let postsList = [];
+  try {
+    const q = query(collection(db, "posts"), orderBy("postedAt", "desc"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      postsList.push(doc.data());
+    })
+  } catch (e) {
+    console.error("Error getting timeline: ", e);
+  }
+  console.log(postsList);
 }
 
 export {
   uploadBase64Img,
-  createPost
+  createPost,
+  getTimeline
 }
