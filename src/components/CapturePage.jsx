@@ -45,7 +45,7 @@ export default function CapturePage() {
         caption: "Test",
       });
       setLoading(false);
-    }, 3000);
+    }, 1500);
   }, [webcamRef]);
 
   return (
