@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import WebcamCapture from './WebcamCapture.jsx'
+import WebcamCapture from './components/WebcamCapture.jsx'
 import viteLogo from '/vite.svg'
 import './App.css'
 
