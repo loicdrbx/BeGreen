@@ -4,8 +4,6 @@ import Picture from "../Picture";
 export default function ResultsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  console.log(searchParams.get("front"));
-
   return (
     <div className="mx-2">
       <h1 className="text-2xl font-black tracking-tight text-center py-3">BeGreen.</h1>

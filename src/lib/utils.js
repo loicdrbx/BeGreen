@@ -26,7 +26,7 @@ async function createPost(postData) {
       caption: postData.caption,
       postedAt: Date.now(),
     });
-    console.log("Document written with ID: ", docRef.id);
+    // console.log("Document written with ID: ", docRef.id);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
@@ -45,7 +45,8 @@ async function getTimeline() {
   } catch (e) {
     console.error("Error getting timeline: ", e);
   }
-  console.log(postsList);
+  // console.log(postsList);
+  return postsList;
 }
 
 export { uploadBase64Img, createPost, getTimeline };
