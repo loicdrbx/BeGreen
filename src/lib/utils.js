@@ -1,10 +1,11 @@
 import { storage, db } from "./firebase";
 import { uploadString, ref, getDownloadURL } from "firebase/storage";
-import { query, where, getDocs, updateDoc, getDoc, orderBy, collection, addDoc } from "firebase/firestore";
+import { query, where, getDocs, updateDoc, orderBy, collection, addDoc } from "firebase/firestore";
 
 async function uploadBase64Img(file) {
   try {
-    const storagePath = file.substring(0, 12);
+    const storagePath = Math.random().toString(36).substring(2) + ".jpg";
+    // const storagePath = file.substring(0, 12);
     const storageRef = ref(storage, storagePath);
 
     const snapshot = await uploadString(storageRef, file, "data_url");
