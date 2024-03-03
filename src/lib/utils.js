@@ -32,7 +32,19 @@ async function createPost(postData) {
   }
 }
 
-function getLeaderBoard() {}
+async function getLeaderboard() {
+  let results = [];
+  try {
+    const q = query(collection(db, "users"), orderBy("currentScore", "desc"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      results.push(doc.data());
+    });
+  } catch(e) {
+    console.log("Failed to get leader board: ", e);
+  }
+  return results;
+}
 
 async function incrementScore(username, score) {
   try {
@@ -58,7 +70,6 @@ async function getTimeline() {
   } catch (e) {
     console.error("Error getting timeline: ", e);
   }
-  // console.log(postsList);
   return postsList;
 }
 
@@ -66,5 +77,6 @@ export {
   uploadBase64Img,
   createPost,
   getTimeline,
-  incrementScore
+  incrementScore,
+  getLeaderboard
 }
