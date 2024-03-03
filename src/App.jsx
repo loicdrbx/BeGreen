@@ -3,8 +3,6 @@ import Navbar from "./Navbar.jsx";
 import Post from "./Post.jsx";
 import Bottom from "./Bottom.jsx";
 
-import { incrementScore } from "./lib/utils.js";
-
 function App() {
   useEffect(() => {
     // analyzeImageFromUrl();
