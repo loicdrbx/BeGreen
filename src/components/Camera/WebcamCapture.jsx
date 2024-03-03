@@ -20,10 +20,10 @@ export default function WebcamCapture() {
   }, [webcamRef]);
 
   return (
-    <>
+    <div className="">
       <button onClick={switchCamera}>switch</button>
-      <Webcam audio={false} height={720} ref={webcamRef} screenshotFormat="image/jpeg" width={1280} videoConstraints={videoConstraints} />
+      <Webcam audio={false} height={720} ref={webcamRef} screenshotFormat="image/jpeg" width={1280} videoConstraints={videoConstraints} className="rounded-lg" />
       <button onClick={capture}>Capture photo</button>
-    </>
+    </div>
   );
 }
