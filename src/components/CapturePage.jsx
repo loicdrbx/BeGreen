@@ -2,7 +2,7 @@ import Webcam from "react-webcam";
 import shutterbutton from "../assets/shutterbutton.png";
 import { useRef, useState, useEffect, useCallback } from "react";
 import Spinner from "../assets/Spinner";
-import { uploadBase64Img } from "../lib/utils";
+import { uploadBase64Img, createPost } from "../lib/utils";
 
 export default function CapturePage() {
   const webcamRef = useRef(null);
@@ -31,12 +31,19 @@ export default function CapturePage() {
 
   const capture = useCallback(async () => {
     const imageSrc = webcamRef.current.getScreenshot();
-    const url = await uploadBase64Img(imageSrc);
-    console.log(url);
+    const backImgUrl = await uploadBase64Img(imageSrc);
 
     switchCamera();
     setLoading(true);
-    setTimeout(() => {
+    setTimeout(async () => {
+      const frontImgUrl = await uploadBase64Img(webcamRef.current.getScreenshot());
+      await createPost({
+        username: "user",
+        backImgUrl,
+        frontImgUrl,
+        score: 0,
+        caption: "Test",
+      });
       setLoading(false);
     }, 3000);
   }, [webcamRef]);

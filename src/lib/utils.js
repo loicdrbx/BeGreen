@@ -18,10 +18,11 @@ async function uploadBase64Img(file) {
 async function createPost(postData) {
   try {
     const docRef = await addDoc(collection(db, "posts"), {
+      username: postData.username,
       backImg: postData.backImgUrl,
       frontImg: postData.frontImgUrl,
       score: postData.score,
-      username: postData.username,
+      caption: postData.caption,
       postedAt: Date.now(),
     });
     console.log("Document written with ID: ", docRef.id);
