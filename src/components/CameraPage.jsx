@@ -37,7 +37,7 @@ export default function CameraPage() {
     const backImg = webcamRef.current.getScreenshot();
     await sleep(1000);
     switchCamera();
-    await sleep(1000);
+    await sleep(2000);
     const frontImg = webcamRef.current.getScreenshot();
     setLoading(true);
 
