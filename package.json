@@ -15,11 +15,8 @@
     "openai": "^4.28.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-<<<<<<< Updated upstream
-    "react-webcam": "^7.2.0"
-=======
+    "react-webcam": "^7.2.0",
     "react-router-dom": "^6.22.2"
->>>>>>> Stashed changes
   },
   "devDependencies": {
     "@types/node": "^20.11.24",

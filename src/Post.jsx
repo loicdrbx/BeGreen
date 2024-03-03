@@ -12,7 +12,7 @@ import Picture from './Picture.jsx'
 function Post() {
   return (
     <>
-      <div class='flex flex-col justify-around mb-8'>
+      <div class='flex flex-col justify-around mb-8 h-5/6'>
         {/* Profile picture and name */}
         <UserHeader />
 
