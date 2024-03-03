@@ -10,7 +10,7 @@ function LeaderboardCard({username, profilepic, points}) {
     <>
         <div className='flex flex-row justify-start items-center ml-5'>
                 <Friend username={username} profilepic={profilepic} />
-                <p className='text-gray-500 font-thin ml-1'>: 60 Green points</p>
+                <p className='text-gray-500 font-thin ml-1'>: {points} Green points</p>
             </div>
     </>
   )

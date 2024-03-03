@@ -26,15 +26,13 @@ async function createPost(postData) {
       caption: postData.caption,
       postedAt: Date.now(),
     });
-    console.log("Document written with ID: ", docRef.id);
+    // console.log("Document written with ID: ", docRef.id);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
 }
 
-function getLeaderBoard() {
-
-}
+function getLeaderBoard() {}
 
 async function incrementScore(username, score) {
   try {
@@ -56,11 +54,12 @@ async function getTimeline() {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       postsList.push(doc.data());
-    })
+    });
   } catch (e) {
     console.error("Error getting timeline: ", e);
   }
-  console.log(postsList);
+  // console.log(postsList);
+  return postsList;
 }
 
 export {

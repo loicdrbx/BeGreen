@@ -9,9 +9,7 @@ const client = createClient(endpoint, credential);
 
 const features = ["Caption", "Read"];
 
-const imageUrl = "https://pbs.twimg.com/media/CgGl0zdUEAAGsnf.jpg";
-
-export async function analyzeImageFromUrl() {
+export async function getCaption(imageUrl) {
   const result = await client.path("/imageanalysis:analyze").post({
     body: {
       url: imageUrl,
@@ -22,10 +20,12 @@ export async function analyzeImageFromUrl() {
 
   const iaResult = result.body;
 
-  if (iaResult.captionResult) {
-    console.log(`Caption: ${iaResult.captionResult.text} (confidence: ${iaResult.captionResult.confidence})`);
-  }
+  if (iaResult.captionResult) return iaResult.captionResult.text;
+  // console.log(`Caption: ${iaResult.captionResult.text} (confidence: ${iaResult.captionResult.confidence})`);
+
   // if (iaResult.readResult) {
   //   iaResult.readResult.blocks.forEach((block) => console.log(`Text Block: ${JSON.stringify(block)}`));
   // }
+
+  return null;
 }

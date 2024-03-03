@@ -3,8 +3,10 @@ import shutterbutton from "../assets/shutterbutton.png";
 import { useRef, useState, useEffect, useCallback } from "react";
 import Spinner from "../assets/Spinner";
 import { uploadBase64Img, createPost } from "../lib/utils";
+import { getCaption } from "../lib/azure";
+import { getScore } from "../lib/openai";
 
-export default function CapturePage() {
+export default function CameraPage() {
   const webcamRef = useRef(null);
   const containerRef = useRef(null);
   const [facingMode, setFacingMode] = useState("environment");
@@ -32,19 +34,24 @@ export default function CapturePage() {
   const capture = useCallback(async () => {
     const imageSrc = webcamRef.current.getScreenshot();
     const backImgUrl = await uploadBase64Img(imageSrc);
+    const caption = await getCaption(backImgUrl);
+    const score = await getScore(caption);
 
     switchCamera();
     setLoading(true);
     setTimeout(async () => {
       const frontImgUrl = await uploadBase64Img(webcamRef.current.getScreenshot());
+
       await createPost({
         username: "user",
         backImgUrl,
         frontImgUrl,
-        score: 0,
-        caption: "Test",
+        score,
+        caption,
       });
       setLoading(false);
+
+      window.location.href = `/results?front=${encodeURIComponent(frontImgUrl)}&back=${encodeURIComponent(backImgUrl)}&score=${score}&caption=${caption}`;
     }, 1500);
   }, [webcamRef]);
 
