@@ -31,9 +31,9 @@ export default function CapturePage() {
   }, [webcamRef]);
 
   return (
-    <div className="w-screen h-screen flex flex-col">
+    <div className="w-svw h-svh flex flex-col">
       <h1 className="pt-5 pb-10 text-xl font-black tracking-tight text-center">BeGreen.</h1>
-      <div ref={containerRef} className="flex-1 overflow-auto bg-gray-900">
+      <div ref={containerRef} className="flex-1 overflow-auto">
         <Webcam audio={false} height={height} ref={webcamRef} screenshotFormat="image/jpeg" width={width} videoConstraints={videoConstraints} className="rounded-lg" />
       </div>
       <div className="flex justify-center">
