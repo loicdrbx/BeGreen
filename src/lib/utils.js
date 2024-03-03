@@ -40,7 +40,7 @@ async function getLeaderboard() {
     querySnapshot.forEach((doc) => {
       results.push(doc.data());
     });
-  } catch(e) {
+  } catch (e) {
     console.log("Failed to get leader board: ", e);
   }
   return results;
@@ -51,8 +51,8 @@ async function incrementScore(username, score) {
     const q = query(collection(db, "users"), where("username", "==", username));
     const querySnapshot = await getDocs(q);
     for (const doc of querySnapshot.docs) {
-      const newScore = doc.data().currentScore += score;
-      await updateDoc(doc.ref,  {currentScore: newScore});
+      const newScore = (doc.data().currentScore += score);
+      await updateDoc(doc.ref, { currentScore: newScore });
     }
   } catch (e) {
     console.error("Error incrementing score: ", e);
@@ -73,10 +73,8 @@ async function getTimeline() {
   return postsList;
 }
 
-export {
-  uploadBase64Img,
-  createPost,
-  getTimeline,
-  incrementScore,
-  getLeaderboard
+export function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+export { uploadBase64Img, createPost, getTimeline, incrementScore, getLeaderboard };

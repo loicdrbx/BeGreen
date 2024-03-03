@@ -3,7 +3,7 @@ import Webcam from "react-webcam";
 import shutterbutton from "../assets/shutterbutton.png";
 import { useRef, useState, useEffect, useCallback } from "react";
 import Spinner from "../assets/Spinner";
-import { uploadBase64Img, createPost } from "../lib/utils";
+import { uploadBase64Img, createPost, sleep } from "../lib/utils";
 import { getCaption } from "../lib/azure";
 import { getScore } from "../lib/openai";
 
@@ -33,33 +33,35 @@ export default function CameraPage() {
     setFacingMode((prev) => (prev === "user" ? "environment" : "user"));
   }, [setFacingMode]);
 
-  const capture = useCallback(async () => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    const backImgUrl = await uploadBase64Img(imageSrc);
-
+  async function capture() {
+    const backImg = webcamRef.current.getScreenshot();
+    await sleep(1000);
     switchCamera();
+    await sleep(1000);
+    const frontImg = webcamRef.current.getScreenshot();
     setLoading(true);
-    setTimeout(async () => {
-      const caption = await getCaption(backImgUrl);
-      const score = await getScore(caption);
-      const frontImgUrl = await uploadBase64Img(webcamRef.current.getScreenshot());
 
-      await createPost({
-        username: "user",
-        backImgUrl,
-        frontImgUrl,
-        score,
-        caption,
-      });
-      setLoading(false);
+    const backImgUrl = await uploadBase64Img(backImg);
+    const frontImgUrl = await uploadBase64Img(frontImg);
+    const caption = await getCaption(backImgUrl);
+    const score = await getScore(caption);
 
-      window.localStorage.setItem("front", frontImgUrl);
-      window.localStorage.setItem("back", backImgUrl);
-      window.localStorage.setItem("score", score);
-      window.localStorage.setItem("caption", caption);
-      navigate("/results");
-    }, 1500);
-  }, [webcamRef]);
+    await createPost({
+      username: "user",
+      backImgUrl,
+      frontImgUrl,
+      score,
+      caption,
+    });
+
+    window.localStorage.setItem("front", frontImgUrl);
+    window.localStorage.setItem("back", backImgUrl);
+    window.localStorage.setItem("score", score);
+    window.localStorage.setItem("caption", caption);
+    navigate("/results");
+
+    setLoading(false);
+  }
 
   return (
     // Content
