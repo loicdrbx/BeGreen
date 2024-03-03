@@ -8,7 +8,7 @@ export async function getScore(caption) {
       {
         role: "system",
         content: `"${caption}"
-Rate the above description on the scale of 1 to 10, (with 10 being the most sustainable). Provide a number response only.
+Rate the above description on the scale of 1 to 10, (with 10 being that the described activity is most likely to contribute to the sustainability of the planet, e.g. riding a bus, recycling, reusing bags). Provide a number response only.
 `,
       },
     ],
