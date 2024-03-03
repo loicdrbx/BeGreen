@@ -4,7 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import Spinner from "../assets/Spinner";
 import { uploadBase64Img, createPost } from "../lib/utils";
 
-export default function CapturePage() {
+export default function CameraPage() {
   const webcamRef = useRef(null);
   const containerRef = useRef(null);
   const [facingMode, setFacingMode] = useState("environment");

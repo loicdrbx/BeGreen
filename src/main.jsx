@@ -5,7 +5,7 @@ import App from "./App";
 import Friends from "./Friends";
 import Leaderboard from "./Leaderboard";
 import "./index.css";
-import CapturePage from "./components/CapturePage";
+import CameraPage from "./components/CameraPage";
 
 const router = createBrowserRouter([
   {
@@ -13,13 +13,17 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: '/friends',
-   element: <Friends />
+    path: "/friends",
+    element: <Friends />,
   },
   {
-    path: '/leaderboard',
-   element: <Leaderboard />
-  }
+    path: "/camera",
+    element: <CameraPage />,
+  },
+  {
+    path: "/leaderboard",
+    element: <Leaderboard />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
