@@ -1,6 +1,6 @@
 import { storage, db } from "./firebase";
 import { uploadString, ref, getDownloadURL } from "firebase/storage";
-import { query, getDocs, orderBy, collection, addDoc } from "firebase/firestore";
+import { query, where, getDocs, updateDoc, getDoc, orderBy, collection, addDoc } from "firebase/firestore";
 
 async function uploadBase64Img(file) {
   try {
@@ -36,6 +36,19 @@ function getLeaderBoard() {
 
 }
 
+async function incrementScore(username, score) {
+  try {
+    const q = query(collection(db, "users"), where("username", "==", username));
+    const querySnapshot = await getDocs(q);
+    for (const doc of querySnapshot.docs) {
+      const newScore = doc.data().currentScore += score;
+      await updateDoc(doc.ref,  {currentScore: newScore});
+    }
+  } catch (e) {
+    console.error("Error incrementing score: ", e);
+  }
+}
+
 async function getTimeline() {
   let postsList = [];
   try {
@@ -53,5 +66,6 @@ async function getTimeline() {
 export {
   uploadBase64Img,
   createPost,
-  getTimeline
+  getTimeline,
+  incrementScore
 }
