@@ -34,12 +34,12 @@ export default function CameraPage() {
   const capture = useCallback(async () => {
     const imageSrc = webcamRef.current.getScreenshot();
     const backImgUrl = await uploadBase64Img(imageSrc);
-    const caption = await getCaption(backImgUrl);
-    const score = await getScore(caption);
 
     switchCamera();
     setLoading(true);
     setTimeout(async () => {
+      const caption = await getCaption(backImgUrl);
+      const score = await getScore(caption);
       const frontImgUrl = await uploadBase64Img(webcamRef.current.getScreenshot());
 
       await createPost({
@@ -51,7 +51,11 @@ export default function CameraPage() {
       });
       setLoading(false);
 
-      window.location.href = `/results?front=${encodeURIComponent(frontImgUrl)}&back=${encodeURIComponent(backImgUrl)}&score=${score}&caption=${caption}`;
+      window.localStorage.setItem("front", frontImgUrl);
+      window.localStorage.setItem("back", backImgUrl);
+      window.localStorage.setItem("score", score);
+      window.localStorage.setItem("caption", caption);
+      window.location.href = "/results";
     }, 1500);
   }, [webcamRef]);
 
