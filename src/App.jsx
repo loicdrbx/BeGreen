@@ -14,6 +14,7 @@ export default function App() {
 
   useEffect(() => {
     fetchData();
+    getLeaderBoard();
   }, []);
 
   return (
