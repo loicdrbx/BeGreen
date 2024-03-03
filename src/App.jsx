@@ -1,5 +1,6 @@
 <<<<<<< Updated upstream
 import { useState } from 'react'
+<<<<<<< Updated upstream
 import reactLogo from './assets/react.svg'
 import WebcamCapture from './components/WebcamCapture.jsx'
 import viteLogo from '/vite.svg'
@@ -12,6 +13,13 @@ import "./App.css";
 // import { analyzeImageFromUrl } from "./lib/azure";
 import { test } from "./lib/openai";
 >>>>>>> Stashed changes
+=======
+// import { BrowserRouter as Router, Route} from 'react-router-dom'
+import './App.css'
+import Navbar from './Navbar.jsx'
+import Post from './Post.jsx'
+import Bottom from './Bottom.jsx'
+>>>>>>> Stashed changes
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,14 +31,16 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div >
+        <Navbar />
+        <div className='pt-14'>
+          <Post />
+          <Post />
+          <Bottom /> 
+        </div>
+
       </div>
+<<<<<<< Updated upstream
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
@@ -42,6 +52,11 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <WebcamCapture />
+=======
+  
+
+
+>>>>>>> Stashed changes
     </>
   );
 }
