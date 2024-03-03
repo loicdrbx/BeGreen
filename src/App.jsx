@@ -4,8 +4,8 @@ import Post from "./Post.jsx";
 import Bottom from "./Bottom.jsx";
 import WebcamCapture from "./components/WebcamCapture.jsx";
 
+
 function App() {
-  const [count, setCount] = useState(0);
 
   useEffect(() => {
     // analyzeImageFromUrl();

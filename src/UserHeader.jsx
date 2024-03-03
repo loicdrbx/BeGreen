@@ -12,8 +12,8 @@ function UserHeader() {
       <div className='flex flex-row justify-start items-center ml-5'>
         <img src={profilepic} alt='profile picture' className='rounded-full h-9 w-9' />
         <div className='text-sm pl-2'>
-            <p>username</p>
-            <p className='text-gray-500'>location</p>
+            <p className='font-medium'>username</p>
+            <p className='text-gray-500 font-thin'>location</p>
         </div>
       </div>
 
