@@ -11,7 +11,7 @@ export default function App() {
     <>
       <div>
         <Navbar />
-        <div className="pt-14">
+        <div className="mt-14">
           <Post />
           <Post />
           <Post />
