@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Navbar from "./Navbar.jsx";
 import Post from "./Post.jsx";
 import Bottom from "./Bottom.jsx";
-import WebcamCapture from "./components/WebcamCapture.jsx";
-
+import WebcamCapture from "./components/Camera/WebcamCapture.jsx";
 
 function App() {
-
   useEffect(() => {
     // analyzeImageFromUrl();
     // test();

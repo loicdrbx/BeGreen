@@ -1,25 +1,29 @@
-import ReactDOM from 'react-dom/client'
+import ReactDOM from "react-dom/client";
 import React from "react";
-import {createBrowserRouter, RouterProvider,} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Friends from "./Friends";
 import "./index.css";
+import CapturePage from "./components/Camera/CapturePage";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
   },
   {
-    path: '/friends',
-   element: <Friends />
-  }
+    path: "/friends",
+    element: <Friends />,
+  },
+  {
+    path: "/camera",
+    element: <CapturePage />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <App /> */}
-    <RouterProvider router ={router} />
-    
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

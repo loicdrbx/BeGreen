@@ -1,4 +1,3 @@
-import { useState } from "react";
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import "./App.css";
 import "./index.css";
@@ -10,7 +9,7 @@ import Picture from "./Picture.jsx";
 function Post() {
   return (
     <>
-      <div className='flex flex-col justify-around mb-9 h-5/6'>
+      <div className="flex flex-col justify-around mb-9 h-5/6">
         {/* Profile picture and name */}
         <UserHeader />
 
