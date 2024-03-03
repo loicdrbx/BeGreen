@@ -1,19 +1,28 @@
-import { useRef, useCallback, useState } from "react";
+import { useRef, useCallback, useState, useEffect } from "react";
 import Webcam from "react-webcam";
 
-export default function WebcamCapture() {
+export default function WebcamCapture({ containerRef, manualTrigger, onCapture }) {
   const webcamRef = useRef(null);
   const [facingMode, setFacingMode] = useState("user");
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
 
   function switchCamera() {
     setFacingMode((prev) => (prev === "user" ? "environment" : "user"));
   }
 
   const videoConstraints = {
-    width: 1280,
-    height: 720,
+    width,
+    height,
     facingMode,
   };
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    setWidth(containerRef.current.offsetWidth);
+    setHeight(containerRef.current.offsetHeight);
+  }, [manualTrigger]);
 
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
@@ -22,7 +31,7 @@ export default function WebcamCapture() {
   return (
     <div className="">
       <button onClick={switchCamera}>switch</button>
-      <Webcam audio={false} height={720} ref={webcamRef} screenshotFormat="image/jpeg" width={1280} videoConstraints={videoConstraints} className="rounded-lg" />
+      <Webcam audio={false} height={height} ref={webcamRef} screenshotFormat="image/jpeg" width={width} videoConstraints={videoConstraints} className="rounded-lg" />
       <button onClick={capture}>Capture photo</button>
     </div>
   );
