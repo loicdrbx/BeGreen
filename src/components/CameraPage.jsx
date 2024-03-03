@@ -55,7 +55,7 @@ export default function CameraPage() {
       window.localStorage.setItem("back", backImgUrl);
       window.localStorage.setItem("score", score);
       window.localStorage.setItem("caption", caption);
-      window.location.href = "/results";
+      window.location.href = "results";
     }, 1500);
   }, [webcamRef]);
 
