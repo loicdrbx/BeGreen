@@ -4,21 +4,9 @@ import viteLogo from "/vite.svg";
 import WebcamCapture from './components/WebcamCapture.jsx'
 import "./App.css";
 // import { analyzeImageFromUrl } from "./lib/azure";
-import storage from "./lib/firebase";
-import { uploadString, ref, getDownloadURL } from "firebase/storage";
 // import { test } from "./lib/openai";
 
 function App() {
-
-  const file = '5b6p5Y+344GX44G+44GX44Gf77yB44GK44KB44Gn44Go44GG77yB';
-  const storageRef = ref(storage, `${file.substring(0, 12)}`);
-  uploadString(storageRef, file, 'base64').then((snapshot) => {
-    console.log('Uploaded a base64url string!');
-    getDownloadURL(storageRef).then((downloadURL) => {
-      console.log('File available at', downloadURL);
-    });
-  });
-
   
   const [count, setCount] = useState(0);
 
