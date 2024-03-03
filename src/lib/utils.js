@@ -32,7 +32,7 @@ async function createPost(postData) {
   }
 }
 
-async function getLeaderBoard() {
+async function getLeaderboard() {
   let results = [];
   try {
     const q = query(collection(db, "users"), orderBy("currentScore", "desc"));
@@ -78,5 +78,5 @@ export {
   createPost,
   getTimeline,
   incrementScore,
-  getLeaderBoard
+  getLeaderboard
 }
