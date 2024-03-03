@@ -1,17 +1,10 @@
-<<<<<<< Updated upstream
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import WebcamCapture from './components/WebcamCapture.jsx'
-import viteLogo from '/vite.svg'
-import './App.css'
-=======
 import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import WebcamCapture from './components/WebcamCapture.jsx'
 import "./App.css";
 // import { analyzeImageFromUrl } from "./lib/azure";
 import { test } from "./lib/openai";
->>>>>>> Stashed changes
 
 function App() {
   const [count, setCount] = useState(0);
